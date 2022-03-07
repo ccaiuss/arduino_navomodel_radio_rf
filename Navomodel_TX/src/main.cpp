@@ -95,7 +95,7 @@ void loop()
   myData.nadire = digitalRead(4);
 
   network.update();
-  if (sendTimer >= 1000)
+  if (sendTimer >= 300)
   {
 
     Serial.println("Send packet# ");

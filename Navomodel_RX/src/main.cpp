@@ -21,6 +21,7 @@ Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 #define MAX_PULSE_WIDTH 2350
 #define DEFAULT_PULSE_WIDTH 1500
 #define FREQUENCY 50
+
 struct dataStruct
 {
   int stanga = 0;
