@@ -4,7 +4,6 @@
 #include <RF24.h>
 #include <SPI.h>
 #include <elapsedMillis.h>
-#include "printf.h"
 elapsedMillis sendTimer;
 RF24 radio(9,10);  
 
@@ -42,7 +41,6 @@ void setup(void)
   radio.setPALevel(RF24_PA_MIN); // RF24_PA_MIN ,RF24_PA_LOW, RF24_PA_HIGH, RF24_PA_MAX
   radio.setDataRate(RF24_250KBPS); // RF24_250KBPS, RF24_1MBPS, RF24_2MBPS
   network.begin(90, this_node);
-  printf_begin();
   radio.printDetails();
 }
 
@@ -95,7 +93,7 @@ void loop()
   myData.nadire = digitalRead(4);
 
   network.update();
-  if (sendTimer >= 300)
+  if (sendTimer >= 300)// 300 ms 
   {
 
     Serial.println("Send packet# ");

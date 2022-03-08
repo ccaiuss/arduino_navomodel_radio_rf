@@ -5,8 +5,8 @@
 #include <SPI.h>
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
-#include "printf.h"
 #include <elapsedMillis.h>
+
 elapsedMillis reciveTimer;
 
 int pulseWidth(int angle);
@@ -48,7 +48,6 @@ void setup(void)
   radio.setPALevel(RF24_PA_MIN);   // RF24_PA_MIN ,RF24_PA_LOW, RF24_PA_HIGH, RF24_PA_MAX
   radio.setDataRate(RF24_250KBPS); // RF24_250KBPS, RF24_1MBPS, RF24_2MBPS
   network.begin(/*channel*/ 90, /*node address*/ this_node);
-  printf_begin();
   radio.printDetails();
 
   reciveTimer = 0;
@@ -67,8 +66,7 @@ void loop(void)
   {
     RF24NetworkHeader header;
     network.read(header, &myData, sizeof(myData));
-    
-    Serial.println("Received packet# ");
+    Serial.println("Pachete primite");
     Serial.println(myData.fata);
     Serial.println(myData.spate);
     Serial.println(myData.stanga);
@@ -118,7 +116,7 @@ void loop(void)
 
   if (reciveTimer > 2000)
   {
-    Serial.println("reciveTimer >2000");
+    Serial.println("OFFLINE");
     myData.stanga = 0;
     myData.dreapta = 0;
     myData.fata = 0;
